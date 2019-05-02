@@ -1,1 +1,58 @@
 @import '~bootstrap/scss/bootstrap';
+$darkgray: #404040;
+$todocolor: rgba(0, 0, 0, .7);
+$background: rgb(175, 175, 175);
+$white: #000;
+
+body {
+  background-color: $background;
+}
+
+nav {
+  background-color: $darkgray;
+  height: 50px;
+}
+
+.to-do-h1 {
+  color: $white;
+  font-size: 100px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.to-do-h4 {
+  color: $white;
+  font-size: 29.5px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.no-to-do {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 65%;
+  justify-content: flex-end;
+}
+
+.login-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: flex-end;
+}
+
+.secondary-buttons {
+  display: block;
+  margin: auto;
+}
+
+.to-do-display {
+  background-color: $todocolor;
+  display: block;
+  height: 80vh;
+  margin: auto;
+  margin-top: 25px;
+  width: 80vw;
+}
