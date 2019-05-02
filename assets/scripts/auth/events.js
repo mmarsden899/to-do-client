@@ -45,13 +45,24 @@ const onChangePassword = function (event) {
     .catch(ui.changePwFailure)
 }
 
+const onToSignUp = function (event) {
+  event.preventDefault()
+  ui.toSignUp()
+}
+
+const onBackToLogin = function (event) {
+  event.preventDefault()
+  ui.backToLogin()
+}
+
 const addHandlers = function (event) {
   $('#to-do').hide()
-  $('#sign-up').hide()
   $('#change-password').hide()
   $('#signUpForm').hide()
   $('.modal').show()
 
+  $('#backtoLogin').on('click', onBackToLogin)
+  $('#sign-up-button').on('click', onToSignUp)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#changepass').on('click', onChangePassButton)

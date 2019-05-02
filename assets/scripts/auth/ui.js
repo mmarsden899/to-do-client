@@ -1,7 +1,10 @@
 const store = require('../store')
+const moment = require('moment')
 
 const signUpSuccess = function (data) {
   $('form').trigger('reset')
+  $('#signUpForm').hide()
+  $('#loginForms').fadeIn('slow')
   console.log('sign up success with data ' + data)
 }
 
@@ -12,10 +15,17 @@ const signUpFailure = function (data) {
 
 const signInSuccess = function (data) {
   store.user = data.user
+  console.log(store.user)
   $('form').trigger('reset')
   $('#loginForms').hide()
   $('#to-do').fadeIn('slow')
   console.log('sign in success with data ' + data)
+  console.log(store.user.created_at)
+  console.log(moment(store.user.created_at).add(1, 'minutes').format())
+  console.log(moment().format())
+  if (moment(store.user.created_at).add(1, 'minutes').format() >= moment().format()) {
+    $('.to-do-h4').html('welcome back!')
+  }
 }
 
 const signInFailure = function (data) {
@@ -54,6 +64,16 @@ const changePwFailure = function () {
   $('form').trigger('reset')
 }
 
+const toSignUp = function () {
+  $('#loginForms').hide()
+  $('#signUpForm').fadeIn('slow')
+}
+
+const backToLogin = function () {
+  $('#signUpForm').hide()
+  $('#loginForms').fadeIn('slow')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -64,5 +84,7 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePwSuccess,
-  changePwFailure
+  changePwFailure,
+  toSignUp,
+  backToLogin
 }
