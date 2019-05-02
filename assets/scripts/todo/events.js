@@ -23,11 +23,23 @@ const onGetToDos = function (event) {
     .catch(ui.getToDoFailure)
 }
 
+const onDestroyToDo = function (event) {
+  event.preventDefault()
+  let id = $(event.target).data().id
+  console.log(id)
+  console.log(event.target)
+  console.log('are we getting here?')
+  // api.destroyToDo(event.target)
+  //   .then(ui.destroyToDoSucces)
+  //   .catch(ui.destroyToDoSucces)
+}
+
 const addHandlers = function () {
   $('#create-to-do').hide()
   $('#get-started').on('click', onGetStarted)
   $('#to-do-form').on('submit', onSendToDo)
   $('#get-todos').on('click', onGetToDos)
+  $('.content').on('click', onDestroyToDo)
 }
 
 module.exports = {
