@@ -41,29 +41,40 @@ const onDestroyToDo = function (event) {
     .catch(ui.destroyToDoSuccess)
 }
 
-const idArray = []
+let idArray = []
+
 const iterateOver = function (id) {
   for (let i = 0; i < store.items.length; i++) {
     if (store.items[i].id !== id) {
       console.log('%%%%%%%%%%%%%%%%')
       console.log(store.items[i])
       idArray.push(store.items[i])
-      console.log(idArray)
     }
   }
+  idArray = [...new Set(idArray)]
   return idArray
+}
+
+let IDs = []
+const getIDs = function () {
+  $('.content').find('section').each(function(){ IDs.push(this.id); })
+  console.log('*********************')
+  console.log(IDs)
 }
 
 const onShowUpdateForm = function (event) {
   clearInterval(window.loopInterval)
   event.preventDefault()
+  $('.content')
   let id = $(event.target).data().id
   let task = store.items.find(function (num) {
     console.log(num.id)
     return num.id === id
   })
   let otherTasks = iterateOver(id)
-  console.log(idArray)
+  getIDs()
+  console.log('=========================')
+  console.log('id array is ! ' + idArray)
   ui.showUpdateForm(task, otherTasks)
 }
 
@@ -78,6 +89,23 @@ const startUpToDos = function () {
 
 const loopToDos = function () {
   window.loopInterval = setInterval(startUpToDos, 2000)
+}
+
+const onCancelUpdate = function (event) {
+  event.preventDefault()
+  startUpToDos()
+}
+
+const onSendUpdate = function (event) {
+  event.preventDefault()
+  let id = $(event.target).data().id
+  const data = getFormFields(event.target)
+  console.log(']]]]]]]]]]]]]]]]]]')
+  console.log(data)
+
+  api.sendUpdate(data, id)
+    .then(ui.sendUpdateSuccess)
+    .catch(ui.sendUpdateFailure)
 }
 
 
@@ -97,10 +125,13 @@ const addHandlers = function () {
 //  $('.content').on('click')
   $('.content').on('click', '.delete', onDestroyToDo)
   $('.content').on('click', '.update', onShowUpdateForm)
+  $('.content').on('click', '.cancel', onCancelUpdate)
+  $('.content').on('submit', '.update-form', onSendUpdate)
 }
 
 module.exports = {
   addHandlers,
   onGetToDos,
-  loopToDos
+  loopToDos,
+  startUpToDos
 }

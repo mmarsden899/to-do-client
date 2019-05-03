@@ -38,8 +38,25 @@ const destroyToDo = function (id) {
   })
 }
 
+const sendUpdate = function (data, id) {
+  return $.ajax({
+    url: config.apiUrl + `/items/${id}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'item': {
+        'title': data.title,
+        'description': data.description
+      }
+    }
+  })
+}
+
 module.exports = {
   sendToDo,
   getToDos,
-  destroyToDo
+  destroyToDo,
+  sendUpdate
 }

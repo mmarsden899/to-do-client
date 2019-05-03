@@ -42,9 +42,8 @@ const getToDoSuccess = function (data) {
 
 const showUpdateForm = function (task, otherTasks) {
   // console.log(store.items.indexOf(id))
-  console.log('**********************')
-  console.log(task)
-  console.log('================================')
+
+  $('.content').empty()
   const showUpdateHtml = showUpdateTemplate({ item: task, otherItems: otherTasks })
   $('.content').html(showUpdateHtml)
 }
@@ -68,6 +67,13 @@ const moreToDos = function () {
   setTimeout(backToDo, 1000)
 }
 
+const sendUpdateFailure = function (data) {
+  console.log('update failed with data ' + JSON.stringify(data))
+}
+
+const sendUpdateSuccess = function (data) {
+  console.log('update succesful with data ' + data)
+}
 
 module.exports = {
   createToDoFadeIn,
@@ -79,5 +85,7 @@ module.exports = {
   destroyToDoSuccess,
   destroyToDoFailure,
   moreToDos,
-  showUpdateForm
+  showUpdateForm,
+  sendUpdateFailure,
+  sendUpdateSuccess
 }

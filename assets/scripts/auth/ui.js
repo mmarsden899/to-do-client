@@ -23,8 +23,10 @@ const signInSuccess = function (data) {
   console.log(store.user.created_at)
   console.log(moment(store.user.created_at).add(1, 'minutes').format())
   console.log(moment().format())
-  if (moment(store.user.created_at).add(1, 'minutes').format() >= moment().format()) {
+  if (moment(store.user.created_at).add(1, 'minutes').format() <= moment().format()) {
     $('.to-do-h4').html('welcome back!')
+  } else {
+    $('.to-do-h4').html('it appears you dont have any to-dos yet!')
   }
 }
 

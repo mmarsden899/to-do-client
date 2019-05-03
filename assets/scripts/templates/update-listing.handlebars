@@ -1,10 +1,12 @@
 <section data-id="{{item.id}}">
   <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px">
 <div id="card-display" class="card-body">
-  <h5 class="card-title">{{limit item.title 15}}</h5>
-  <p class="card-text">{{item.description}}</p>
-  <input type="text" data-id="{{item.id}}" placeholder="{{item.title}}">
-  <input type="text" data-id="{{item.id}}" placeholder="{{limit item.description 15}}">
+  <form data-id="{{item.id}}" class="update-form">
+  <input type="text" name="title" data-id="{{item.id}}" placeholder="{{item.title}}">
+  <input type="text" name="description" data-id="{{item.id}}" placeholder="{{limit item.description 15}}">
+  <input type="submit" data-id="{{item.id}}" value="submit" class="btn btn-primary btn-sm update-send">
+</form>
+  <button data-id="{{item.id}}" class="btn btn-danger btn-sm cancel">cancel</button>
 </div>
 </div>
 </section>
@@ -15,8 +17,6 @@
   <div id="card-display" class="card-body">
     <h5 class="card-title">{{limit otherItem.title 15}}</h5>
     <p class="card-text">{{otherItem.description}}</p>
-    <button data-id="{{otherItem.id}}" class="btn btn-danger btn-sm delete">Complete</button>
-    <button data-id="{{otherItem.id}}" class="btn btn-primary btn-sm update">Update</button>
     <p>Due in</p><p id='time'>{{otherItem.created_at}}</p>
   </div>
 </div>
