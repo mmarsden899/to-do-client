@@ -2,11 +2,12 @@
   {{log item}}
   <section data-id="{{item.id}}">
     <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px">
-  <div class="card-body">
+  <div id="card-display" class="card-body">
     <h5 class="card-title">{{limit item.title 15}}</h5>
     <p class="card-text">{{item.description}}</p>
-    <button data-id="{{item.id}}" class="btn btn-danger">Remove</button>
-    <a href="#" class="card-link">Another link</a>
+    <button data-id="{{item.id}}" class="btn btn-danger btn-sm delete">Complete</button>
+    <button data-id="{{item.id}}" class="btn btn-primary btn-sm update">Update</button>
+    <p>Due in</p><p id='time'>{{item.created_at}}</p>
   </div>
 </div>
   </section>

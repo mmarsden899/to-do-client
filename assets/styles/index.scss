@@ -13,6 +13,10 @@ nav {
   height: 50px;
 }
 
+.update-task {
+  position: absolute;
+}
+
 .content {
   display: flex;
   flex-direction: row;
@@ -25,6 +29,10 @@ nav {
   display: block;
   margin-top: 15px;
   background-color: rgba(255,255,255,.7)
+}
+
+#empty-space-div {
+  height: 80px;
 }
 
 .to-do-h1 {
@@ -41,11 +49,10 @@ nav {
   text-align: center;
 }
 
-.create-to-do {
+.create-to-do, .add-another {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 15%;
   justify-content: flex-end;
 }
 
@@ -80,6 +87,10 @@ nav {
 .secondary-buttons {
   display: block;
   margin: auto;
+}
+
+.to-do-wrap {
+
 }
 
 .to-do-display {

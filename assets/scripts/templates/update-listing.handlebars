@@ -1,0 +1,25 @@
+<section data-id="{{item.id}}">
+  <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px">
+<div id="card-display" class="card-body">
+  <h5 class="card-title">{{limit item.title 15}}</h5>
+  <p class="card-text">{{item.description}}</p>
+  <input type="text" data-id="{{item.id}}" placeholder="{{item.title}}">
+  <input type="text" data-id="{{item.id}}" placeholder="{{limit item.description 15}}">
+</div>
+</div>
+</section>
+{{#each otherItems as |otherItem|}}
+  {{log otherItem}}
+  <section data-id="{{otherItem.id}}">
+    <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px">
+  <div id="card-display" class="card-body">
+    <h5 class="card-title">{{limit otherItem.title 15}}</h5>
+    <p class="card-text">{{otherItem.description}}</p>
+    <button data-id="{{otherItem.id}}" class="btn btn-danger btn-sm delete">Complete</button>
+    <button data-id="{{otherItem.id}}" class="btn btn-primary btn-sm update">Update</button>
+    <p>Due in</p><p id='time'>{{otherItem.created_at}}</p>
+  </div>
+</div>
+  </section>
+
+{{/each}}

@@ -56,7 +56,6 @@ const onBackToLogin = function (event) {
 }
 
 const addHandlers = function (event) {
-  $('#to-do').hide()
   $('#change-password').hide()
   $('#signUpForm').hide()
   $('.modal').show()

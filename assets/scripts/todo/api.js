@@ -28,7 +28,18 @@ const getToDos = function () {
   })
 }
 
+const destroyToDo = function (id) {
+  return $.ajax({
+    url: config.apiUrl + `/items/${id}`,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   sendToDo,
-  getToDos
+  getToDos,
+  destroyToDo
 }
