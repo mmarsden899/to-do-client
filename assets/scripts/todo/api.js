@@ -1,5 +1,6 @@
 const config = require('../config')
 const store = require('../store')
+const moment = require('moment')
 
 const sendToDo = function (data) {
   return $.ajax({
@@ -13,6 +14,24 @@ const sendToDo = function (data) {
         'title': data.title,
         'description': data.description,
         'user_id': store.user.id
+      }
+    }
+  })
+}
+
+const newUser = function () {
+  return $.ajax({
+    url: config.apiUrl + '/items',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'item': {
+        'title': 'welcome to',
+        'description': 'due in seven days',
+        'user_id': store.user.id,
+        'created_at': moment().subtract(7, 'd').format()
       }
     }
   })
@@ -58,5 +77,6 @@ module.exports = {
   sendToDo,
   getToDos,
   destroyToDo,
-  sendUpdate
+  sendUpdate,
+  newUser
 }

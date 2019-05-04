@@ -1,4 +1,5 @@
 const store = require('../store')
+const toDoApi = require('../todo/api')
 const moment = require('moment')
 
 const signUpSuccess = function (data) {
@@ -16,10 +17,11 @@ const signInSuccess = function (data) {
   $('form').trigger('reset')
   $('#loginForms').hide()
   $('#to-do').fadeIn('slow')
-  if (moment(store.user.created_at).add(1, 'minutes').format() >= moment().format()) {
-    $('.to-do-h4').html('welcome back!')
+  if (moment(store.user.created_at).add(1, 'm').format() >= moment().format()) {
+    $('.to-do-h4').html('welcome to due in seven days!')
+    toDoApi.newUser()
   } else {
-    $('.to-do-h4').html('it appears you dont have any to-dos yet!')
+    $('.to-do-h4').html('welcome back!')
   }
 }
 

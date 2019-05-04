@@ -17,9 +17,14 @@ nav {
 b {
   font-size: 13px;
 }
+
 .nav div {
   height: 50px;
   margin: 0;
+}
+
+i {
+  transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 .nav-bar-li {
@@ -47,6 +52,7 @@ b {
   opacity: 1;
   display: block;
   visibility: visible;
+  transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 .update-task {
