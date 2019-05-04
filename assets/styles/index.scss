@@ -1,5 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css?family=Righteous');
+@import url('https://fonts.googleapis.com/css?family=Dosis');
 $darkgray: #404040;
 $todocolor: rgba(0, 0, 0, .7);
 $background: rgb(175, 175, 175);
@@ -12,6 +12,41 @@ body {
 nav {
   background-color: $darkgray;
   height: 50px;
+}
+
+b {
+  font-size: 13px;
+}
+.nav div {
+  height: 50px;
+  margin: 0;
+}
+
+.nav-bar-li {
+  width: 120px;
+}
+
+.log {
+  margin-left: -25px;
+}
+
+.nav li b {
+  margin-top: -25px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.nav div:hover i {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.nav div:hover b {
+  opacity: 1;
+  display: block;
+  visibility: visible;
 }
 
 .update-task {
@@ -37,7 +72,7 @@ nav {
 }
 
 h1 {
-  font-family: 'Righteous', cursive;
+  font-family: 'Dosis', sans-serif;
 }
 
 .to-do-h1 {

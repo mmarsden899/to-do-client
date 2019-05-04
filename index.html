@@ -6,6 +6,7 @@
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -13,16 +14,20 @@
     </head>
     <body>
       <div id="to-do" class="to-do">
-      <nav>
+        <nav>
         <ul class="nav">
-  <li><a href="#"><span id="changepass"></span>change Password</a></li>
-  <li><a href="#"><span id="sign-out"></span>sign Out</a></li>
-</ul>
-</nav>
+          <button class="btn btn-default btn-lg">
+  <div><li class="nav-bar-li"><i class="fas fa-unlock-alt"></i><b>change password</b></li></div>
+    </button>
+      <button class="btn btn-default btn-lg">
+      <div id="sign-out"><li class="nav-bar-li"><i class="fas fa-sign-out-alt"></i><b class="log">log out</b></li></div>
+    </button>
+    </ul>
+        </nav>
 
   <div class="to-do-display">
     <div id="no-to-do" class="no-to-do">
-    <h1 class="to-do-h1">HEY THERE!</h1>
+    <h1 class="to-do-h1">hey there!</h1>
     <h4 class="to-do-h4"></h4>
     <button id="get-started">let's get started!</button>
   </div>

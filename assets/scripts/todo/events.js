@@ -15,10 +15,10 @@ const onSendToDo = function (event) {
   api.sendToDo(data)
     .then(ui.sendToDoSuccess)
     .catch(ui.sendToDoFailure)
+  setTimeout(onGetToDos, 1500)
 }
 
-const onGetToDos = function (event) {
-  event.preventDefault()
+const onGetToDos = function () {
   api.getToDos()
     .then(ui.getToDoSuccess)
     .catch(ui.getToDoFailure)
@@ -39,27 +39,10 @@ const onDestroyToDo = function (event) {
     .catch(ui.destroyToDoSuccess)
 }
 
-let idArray = []
-
-const iterateOver = function (id) {
-  for (let i = 0; i < store.items.length; i++) {
-    if (store.items[i].id !== id) {
-      idArray.push(store.items[i])
-    }
-  }
-  idArray = [...new Set(idArray)]
-  return idArray
-}
-
-let IDs = []
-const getIDs = function () {
-  $('.content').find('section').each(function(){ IDs.push(this.id); })
-}
-
 const onShowUpdateForm = function (event) {
   clearInterval(window.loopInterval)
   event.preventDefault()
-  let id = $(event.target).data().id
+  const id = $(event.target).data().id
   window.id = $(event.target).data().id
   ui.showUpdateForm(store.items)
 }
@@ -74,7 +57,7 @@ const startUpToDos = function () {
 }
 
 const loopToDos = function () {
-  window.loopInterval = setInterval(startUpToDos, 2000)
+  window.loopInterval = setTimeout(startUpToDos, 1500)
 }
 
 const onCancelUpdate = function (event) {
@@ -84,7 +67,7 @@ const onCancelUpdate = function (event) {
 
 const onSendUpdate = function (event) {
   event.preventDefault()
-  let id = $(event.target).data().id
+  const id = $(event.target).data().id
   const data = getFormFields(event.target)
 
   api.sendUpdate(data, id)

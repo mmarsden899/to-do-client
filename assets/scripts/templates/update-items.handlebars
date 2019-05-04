@@ -1,5 +1,4 @@
 {{#each items as |item|}}
-  {{log item}}
   {{#if (compare item.id)}}
 <section data-id="{{item.id}}">
   {{#if (overdue item.created_at)}}
