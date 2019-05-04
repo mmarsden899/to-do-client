@@ -1,5 +1,5 @@
 const showItemsTemplate = require('../templates/todo-listing.handlebars')
-const showUpdateTemplate = require('../templates/update-listing.handlebars')
+const showUpdateTemplate = require('../templates/update-items.handlebars')
 // const events = require('./events')
 const store = require('../store')
 const events = require('./events')
@@ -40,18 +40,16 @@ const getToDoSuccess = function (data) {
   $('.content').html(showItemsHtml)
 }
 
-const showUpdateForm = function (task, otherTasks) {
+const showUpdateForm = function () {
   // console.log(store.items.indexOf(id))
-
-  $('.content').empty()
-  const showUpdateHtml = showUpdateTemplate({ item: task, otherItems: otherTasks })
+  console.log(store.items)
+  const showUpdateHtml = showUpdateTemplate({ items: store.items })
   $('.content').html(showUpdateHtml)
 }
 
 const destroyToDoSuccess = function (id) {
   $(id).hide()
   console.log('destroy todo success')
-  events.loopToDos()
 }
 
 const destroyToDoFailure = function (id) {
@@ -72,7 +70,6 @@ const sendUpdateFailure = function (data) {
 }
 
 const sendUpdateSuccess = function (data) {
-  console.log('update succesful with data ' + data)
 }
 
 module.exports = {

@@ -38,6 +38,7 @@ const onDestroyToDo = function (event) {
   console.log('are we getting here?')
   api.destroyToDo(id)
     .then(ui.destroyToDoSuccess(id))
+    .then(loopToDos)
     .catch(ui.destroyToDoSuccess)
 }
 
@@ -65,8 +66,9 @@ const getIDs = function () {
 const onShowUpdateForm = function (event) {
   clearInterval(window.loopInterval)
   event.preventDefault()
-  $('.content')
   let id = $(event.target).data().id
+  window.id = $(event.target).data().id
+  let items = store.items
   let task = store.items.find(function (num) {
     console.log(num.id)
     return num.id === id
@@ -75,7 +77,7 @@ const onShowUpdateForm = function (event) {
   getIDs()
   console.log('=========================')
   console.log('id array is ! ' + idArray)
-  ui.showUpdateForm(task, otherTasks)
+  ui.showUpdateForm(store.items)
 }
 
 const onMoreToDos = function (event) {
@@ -105,6 +107,7 @@ const onSendUpdate = function (event) {
 
   api.sendUpdate(data, id)
     .then(ui.sendUpdateSuccess)
+    .then(loopToDos)
     .catch(ui.sendUpdateFailure)
 }
 
