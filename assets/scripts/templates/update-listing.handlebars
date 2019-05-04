@@ -1,5 +1,9 @@
 <section data-id="{{item.id}}">
+  {{#if (overdue item.created_at)}}
   <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px">
+    {{else}}
+    <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px; background-color: red">
+      {{/if}}
 <div id="card-display" class="card-body">
   <form data-id="{{item.id}}" class="update-form">
   <input type="text" name="title" data-id="{{item.id}}" placeholder="{{item.title}}">
@@ -13,11 +17,15 @@
 {{#each otherItems as |otherItem|}}
   {{log otherItem}}
   <section data-id="{{otherItem.id}}">
+    {{#if (overdue item.created_at)}}
     <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px">
+      {{else}}
+      <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px; background-color: red">
+        {{/if}}
   <div id="card-display" class="card-body">
     <h5 class="card-title">{{limit otherItem.title 15}}</h5>
     <p class="card-text">{{otherItem.description}}</p>
-    <p>Due in</p><p id='time'>{{otherItem.created_at}}</p>
+    <p>Due in</p><p id='time'>{{convert otherItem.created_at}}</p>
   </div>
 </div>
   </section>

@@ -12,7 +12,6 @@ const onSendToDo = function (event) {
   event.preventDefault()
 
   const data = getFormFields(event.target)
-  console.log(data)
   api.sendToDo(data)
     .then(ui.sendToDoSuccess)
     .catch(ui.sendToDoFailure)
@@ -34,8 +33,6 @@ const onGetToDoStart = function () {
 const onDestroyToDo = function (event) {
   event.preventDefault()
   let id = $(event.target).data().id
-  console.log(id)
-  console.log('are we getting here?')
   api.destroyToDo(id)
     .then(ui.destroyToDoSuccess(id))
     .then(loopToDos)
@@ -47,8 +44,6 @@ let idArray = []
 const iterateOver = function (id) {
   for (let i = 0; i < store.items.length; i++) {
     if (store.items[i].id !== id) {
-      console.log('%%%%%%%%%%%%%%%%')
-      console.log(store.items[i])
       idArray.push(store.items[i])
     }
   }
@@ -59,8 +54,6 @@ const iterateOver = function (id) {
 let IDs = []
 const getIDs = function () {
   $('.content').find('section').each(function(){ IDs.push(this.id); })
-  console.log('*********************')
-  console.log(IDs)
 }
 
 const onShowUpdateForm = function (event) {
@@ -68,15 +61,6 @@ const onShowUpdateForm = function (event) {
   event.preventDefault()
   let id = $(event.target).data().id
   window.id = $(event.target).data().id
-  let items = store.items
-  let task = store.items.find(function (num) {
-    console.log(num.id)
-    return num.id === id
-  })
-  let otherTasks = iterateOver(id)
-  getIDs()
-  console.log('=========================')
-  console.log('id array is ! ' + idArray)
   ui.showUpdateForm(store.items)
 }
 
@@ -102,8 +86,6 @@ const onSendUpdate = function (event) {
   event.preventDefault()
   let id = $(event.target).data().id
   const data = getFormFields(event.target)
-  console.log(']]]]]]]]]]]]]]]]]]')
-  console.log(data)
 
   api.sendUpdate(data, id)
     .then(ui.sendUpdateSuccess)

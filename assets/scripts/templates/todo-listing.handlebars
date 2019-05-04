@@ -1,7 +1,11 @@
 {{#each items as |item|}}
   {{log item}}
   <section data-id="{{item.id}}">
+    {{#if (overdue item.created_at)}}
     <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px">
+      {{else}}
+      <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px; background-color: rgb(124, 41, 41)">
+        {{/if}}
   <div id="card-display" class="card-body">
     <h5 class="card-title">{{limit item.title 15}}</h5>
     <p class="card-text">{{item.description}}</p>

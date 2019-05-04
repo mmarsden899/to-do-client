@@ -5,14 +5,14 @@
 'use strict'
 const moment = require('moment')
 
-const convert = (str) => {
+const overdue = (num) => {
   const momentNow = moment().format()
-  const dueIn = moment(str).add(7, 'd').format()
+  const dueIn = moment(num).add(7, 'd').format()
   if (dueIn > momentNow) {
-    return `due in ${moment(dueIn).fromNow()}`
+    return true
   } else {
-    return 'task overdue!'
+    return false
   }
 }
 
-module.exports = convert
+module.exports = overdue

@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Righteous');
 $darkgray: #404040;
 $todocolor: rgba(0, 0, 0, .7);
 $background: rgb(175, 175, 175);
@@ -33,6 +34,10 @@ nav {
 
 #empty-space-div {
   height: 80px;
+}
+
+h1 {
+  font-family: 'Righteous', cursive;
 }
 
 .to-do-h1 {

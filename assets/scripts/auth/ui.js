@@ -5,24 +5,17 @@ const signUpSuccess = function (data) {
   $('form').trigger('reset')
   $('#signUpForm').hide()
   $('#loginForms').fadeIn('slow')
-  console.log('sign up success with data ' + data)
 }
 
 const signUpFailure = function (data) {
   $('form').trigger('reset')
-  console.log('sign up failure with data ' + data)
 }
 
 const signInSuccess = function (data) {
   store.user = data.user
-  console.log(store.user)
   $('form').trigger('reset')
   $('#loginForms').hide()
   $('#to-do').fadeIn('slow')
-  console.log('sign in success with data ' + data)
-  console.log(store.user.created_at)
-  console.log(moment(store.user.created_at).add(1, 'minutes').format())
-  console.log(moment().format())
   if (moment(store.user.created_at).add(1, 'minutes').format() >= moment().format()) {
     $('.to-do-h4').html('welcome back!')
   } else {
@@ -32,7 +25,6 @@ const signInSuccess = function (data) {
 
 const signInFailure = function (data) {
   $('form').trigger('reset')
-  console.log('sign in failure with data ' + JSON.stringify(data))
 }
 
 const changePass = function () {
@@ -52,7 +44,6 @@ const signOutSuccess = function () {
 }
 
 const signOutFailure = function () {
-  console.log('Sign Out Failed!')
 }
 
 const changePwSuccess = function () {
@@ -62,7 +53,6 @@ const changePwSuccess = function () {
 }
 
 const changePwFailure = function () {
-  console.log('change pw failed')
   $('form').trigger('reset')
 }
 
