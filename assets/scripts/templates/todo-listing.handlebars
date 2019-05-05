@@ -3,16 +3,19 @@
     {{#if (overdue item.created_at)}}
     <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px">
       {{else}}
-      <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px; background-color: rgb(124, 41, 41)">
+      <div class="card dng" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px;">
         {{/if}}
   <div id="card-display" class="card-body">
-    <h5 class="card-title">{{limit item.title 15}}</h5>
-    <p class="card-text">{{item.description}}</p>
+    <h5 class="card-title">{{item.title}}</h5>
+    <p class="card-text todo-descrip">{{limit item.description 35}}</p>
     <button data-id="{{item.id}}" class="btn btn-danger btn-sm delete">Complete</button>
     <button data-id="{{item.id}}" class="btn btn-primary btn-sm update">Update</button>
-    <p id='time'>{{convert item.created_at}}</p>
+    {{#if (overdue item.created_at)}}
+    <p id='time' class="time">{{convert item.created_at}}</p>
+    {{else}}
+    <p id='over-time' class="over-time">{{convert item.created_at}}</p>
+    {{/if}}
   </div>
 </div>
   </section>
-
 {{/each}}

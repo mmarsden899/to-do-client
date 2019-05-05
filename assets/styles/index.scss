@@ -1,8 +1,10 @@
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700');
 $darkgray: #404040;
 $todocolor: rgba(0, 0, 0, .7);
-$background: rgb(175, 175, 175);
+$todocolorback: rgba(0, 0, 0, .8);
+$background: rgb(148, 144, 144);
+$darkerback: rgb(116, 114, 114);
 $white: #fff;
 
 body {
@@ -12,6 +14,9 @@ body {
 nav {
   background-color: $darkgray;
   height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 b {
@@ -24,11 +29,35 @@ b {
 }
 
 i {
+  text-shadow: -1px -1px 1px rgb(33, 33, 33);
   transition: visibility 0.5s, opacity 0.5s linear;
 }
-
 .nav-bar-li {
-  width: 120px;
+  margin: 0;
+  width: 40px;
+}
+
+.over-time {
+  animation: overtimefadein 2s infinite;
+}
+
+@keyframes overtimefadein {
+    0%  { opacity: 0; }
+    50%  { opacity: 1; }
+    100%  { opacity: 0; }
+}
+
+.time, .over-time {
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.todo-descrip {
+  height: 50px;
+}
+
+.pwd {
+  margin-left: -20px;
 }
 
 .log {
@@ -68,16 +97,62 @@ i {
 }
 
 .card {
+  text-align: center;
   display: block;
   margin-top: 15px;
-  background-color: rgba(255,255,255,.7)
+  background-color: $background;
+  border-radius: 10%;
+  transition: background-color 1s;
+//  animation: fadein 2s;
+}
+/* fadein transtion
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+*/
+
+.card button {
+  border-radius: 8px;
+}
+
+.card:hover {
+  background-color: $darkerback;
+  transition: background-color 1s;
+}
+
+.dng {
+  color: white;
+  background-color: rgba(124, 41, 41, .9);
+  transition: background-color 1s;
+}
+
+.dng:hover {
+  background-color: rgba(100, 21, 21, .9);
+  transition: background-color 1s;
 }
 
 #empty-space-div {
   height: 80px;
 }
 
-h1 {
+.titleh5 {
+  margin-top: 5px;
+  font-size: 25px;
+  font-weight: 600;
+  text-shadow: -1px -1px 1px rgb(33, 33, 33);
+}
+h2 {
+  color: white;
+}
+
+.taskscompleted {
+  font-size: 17px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+h1, h2, .titleh5, .taskscompleted {
   font-family: 'Dosis', sans-serif;
 }
 
@@ -123,20 +198,23 @@ h1 {
 }
 
 .login-container {
+  height: 55vh;
+}
+
+.passwordForm {
+  height: 60vh;
+}
+
+.login-container, .passwordForm {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 50vh;
   justify-content: flex-end;
 }
 
 .secondary-buttons {
   display: block;
   margin: auto;
-}
-
-.to-do-wrap {
-
 }
 
 .to-do-display {

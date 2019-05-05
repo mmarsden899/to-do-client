@@ -9,7 +9,7 @@
 <div id="card-display" class="card-body">
   <form data-id="{{item.id}}" class="update-form">
   <input type="text" name="title" data-id="{{item.id}}" placeholder="{{item.title}}">
-  <input type="text" name="description" data-id="{{item.id}}" placeholder="{{limit item.description 15}}">
+  <input class="todo-descrip" type="text" name="description" data-id="{{item.id}}" placeholder="{{limit item.description 35}}">
   <input type="submit" data-id="{{item.id}}" value="submit" class="btn btn-primary btn-sm update-send">
 </form>
   <button data-id="{{item.id}}" class="btn btn-danger btn-sm cancel">cancel</button>
@@ -24,9 +24,9 @@
       <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px; background-color: rgb(124, 41, 41)">
         {{/if}}
   <div id="card-display" class="card-body">
-    <h5 class="card-title">{{limit item.title 15}}</h5>
-    <p class="card-text">{{item.description}}</p>
-    <p id='time'>{{convert item.created_at}}</p>
+    <h5 class="card-title">{{item.title}}</h5>
+    <p class="card-text todo-descrip">{{limit item.description 35}}</p>
+    <p id="time" class="time">{{convert item.created_at}}</p>
   </div>
 </div>
   </section>

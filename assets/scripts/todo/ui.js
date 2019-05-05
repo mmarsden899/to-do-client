@@ -8,6 +8,10 @@ const createToDoFadeIn = function () {
   $('#create-to-do').fadeIn('slow')
 }
 
+const showToDoFadeIn = function () {
+  $('.content').fadeIn('slow')
+}
+
 const addAnotherFadeIn = function () {
   $('#add-another').fadeIn('slow')
 }
@@ -15,6 +19,7 @@ const addAnotherFadeIn = function () {
 const getStarted = function () {
   $('#no-to-do').fadeOut('slow')
   setTimeout(createToDoFadeIn, 1000)
+  setTimeout(showToDoFadeIn, 1500)
 }
 
 const sendToDoFailure = function () {

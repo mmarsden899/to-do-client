@@ -15,7 +15,7 @@ const onSendToDo = function (event) {
   api.sendToDo(data)
     .then(ui.sendToDoSuccess)
     .catch(ui.sendToDoFailure)
-  setTimeout(onGetToDos, 1500)
+  setTimeout(onGetToDos, 500)
 }
 
 const onGetToDos = function () {
@@ -53,11 +53,11 @@ const onMoreToDos = function (event) {
 }
 
 const startUpToDos = function () {
-  setTimeout(onGetToDoStart, 1000)
+  setTimeout(onGetToDoStart, 500)
 }
 
 const loopToDos = function () {
-  window.loopInterval = setTimeout(startUpToDos, 1500)
+  window.loopInterval = setTimeout(startUpToDos, 500)
 }
 
 const onCancelUpdate = function (event) {
@@ -83,6 +83,7 @@ const addHandlers = function () {
   $('#create-to-do').hide()
   $('#card-update').hide()
   $('#update-task').hide()
+  $('.content').hide()
 
   $('#lets-do-it').on('click', onMoreToDos)
   $('#get-started').on('click', onGetStarted)

@@ -29,20 +29,31 @@ const signInFailure = function (data) {
   $('form').trigger('reset')
 }
 
+const changePasswordFadeIn = function () {
+  $('#change-password').fadeIn('slow')
+}
+
 const changePass = function () {
-  $('#to-do').hide()
-  $('#change-password').show()
+  $('#to-do').fadeOut('slow')
+  setTimeout(changePasswordFadeIn, 500)
 }
 
 const passToAccount = function () {
   $('#change-password').hide()
-  $('#to-do').show()
+  $('#to-do').fadeIn('slow')
 }
 
 const signOutSuccess = function () {
   $('#to-do').hide()
-  $('#loginForms').show()
+  $('#add-another').hide()
+  $('#create-to-do').fadeOut(700)
+  $('#card-update').fadeOut(700)
+  $('#update-task').fadeOut(700)
+  $('.content').fadeOut(700)
+  $('#no-to-do').show()
+  setTimeout($('#loginForms').fadeIn(1500), 750)
   store.user = null
+  store.items = null
 }
 
 const signOutFailure = function () {
