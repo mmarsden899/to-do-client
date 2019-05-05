@@ -15,10 +15,14 @@
     <body>
       <div id="to-do" class="to-do">
         <nav>
-          <div class="taskscompleted"><p>tasks completed: </p></div>
+          <div class="taskscompleted"><p id="taskscompleted"> </p></div>
           <div class="nav-title-div"><h5 class="titleh5">due in seven days</h5></div>
           <div class="nav-button-div">
         <ul class="nav">
+          <div id="toggle-button-wrapper" class="toggle-button-wrapper">
+            <div id="toggle-button" style="cursor: pointer" class="toggle-button">
+            </div>
+          </div>
           <button class="btn btn-default btn-lg">
   <div id="changepass"><li class="nav-bar-li"><i class="fas fa-unlock-alt"></i><b class="pwd">password</b></li></div>
     </button>
@@ -70,6 +74,7 @@
 <input type="text" name="credentials[email]" placeholder="Email" class="sign-up-form">
 <input type="password" name="credentials[password]" placeholder="Password" class="sign-up-form">
 <input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation" class="sign-up-form">
+<input type="number" name="completed" value=0 class="hidden-completed">
 <p id="signUpError" class="signInError"> </p>
 <input type="submit" id="buttonSignUp" value="Sign Up!" class="signUpButton submit-button">
 </form>

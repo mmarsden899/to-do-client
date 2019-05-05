@@ -1,6 +1,7 @@
 'use strict'
 const config = require('../config')
 const store = require('../store')
+const moment = require('moment')
 
 const signUp = function (data) {
   return $.ajax({
@@ -38,9 +39,44 @@ const signOut = function () {
   })
 }
 
+const updateCompleted = function () {
+  return $.ajax({
+    url: config.apiUrl + '/users/' + parseInt(store.user.id),
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'item': {
+        'completed': (store.user.completed + 1)
+      }
+    }
+  })
+}
+
+const newUser = function () {
+  return $.ajax({
+    url: config.apiUrl + '/items',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'item': {
+        'title': 'welcome to',
+        'description': 'due in seven days',
+        'user_id': store.user.id,
+        'created_at': moment().subtract(7, 'd').format()
+      }
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  updateCompleted,
+  newUser
 }

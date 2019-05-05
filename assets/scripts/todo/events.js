@@ -3,9 +3,11 @@ const ui = require('./ui')
 const api = require('./api')
 const moment = require('moment')
 const store = require('../store')
+const authEvents = require('../auth/events')
 
 const onGetStarted = function () {
   ui.getStarted()
+  $('#taskscompleted').text(`tasks completed: ${store.user.completed}`)
 }
 
 const onSendToDo = function (event) {
@@ -37,13 +39,14 @@ const onDestroyToDo = function (event) {
     .then(ui.destroyToDoSuccess(id))
     .then(loopToDos)
     .catch(ui.destroyToDoSuccess)
+  authEvents.onUpdateCompleted()
 }
 
 const onShowUpdateForm = function (event) {
   clearInterval(window.loopInterval)
   event.preventDefault()
   const id = $(event.target).data().id
-  window.id = $(event.target).data().id
+  store.id = $(event.target).data().id
   ui.showUpdateForm(store.items)
 }
 
@@ -76,6 +79,9 @@ const onSendUpdate = function (event) {
     .catch(ui.sendUpdateFailure)
 }
 
+const onTurnCSS = function () {
+  ui.turnCSS()
+}
 
 const addHandlers = function () {
   $('#to-do').hide()
@@ -84,6 +90,8 @@ const addHandlers = function () {
   $('#card-update').hide()
   $('#update-task').hide()
   $('.content').hide()
+
+  $('#toggle-button').on('click', onTurnCSS)
 
   $('#lets-do-it').on('click', onMoreToDos)
   $('#get-started').on('click', onGetStarted)

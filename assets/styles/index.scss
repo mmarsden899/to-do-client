@@ -146,8 +146,28 @@ h2 {
   color: white;
 }
 
+.toggle-button-wrapper {
+  background-color: teal;
+  height: 50px;
+  width: 200px;
+  border-radius: 15px;
+}
+
+.toggle-button {
+  height: 30px;
+  width: 50px;
+  border-radius: 25%;
+  right: 0;
+  background-color: gray;
+}
+
+.hidden-completed {
+  opacity: 0;
+}
+
 .taskscompleted {
   font-size: 17px;
+  font-weight: 600;
   margin-top: 10px;
   margin-left: 5px;
 }

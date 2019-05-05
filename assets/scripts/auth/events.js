@@ -14,7 +14,6 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-
   const data = getFormFields(event.target)
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -55,6 +54,12 @@ const onBackToLogin = function (event) {
   ui.backToLogin()
 }
 
+const onUpdateCompleted = function () {
+  api.updateCompleted()
+    .then(ui.updateCompletedSuccess)
+    .catch(ui.updateCompletedFailure)
+}
+
 const addHandlers = function (event) {
   $('#change-password').hide()
   $('#signUpForm').hide()
@@ -71,5 +76,6 @@ const addHandlers = function (event) {
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  onUpdateCompleted
 }

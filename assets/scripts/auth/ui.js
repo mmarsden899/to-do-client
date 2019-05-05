@@ -17,11 +17,14 @@ const signInSuccess = function (data) {
   $('form').trigger('reset')
   $('#loginForms').hide()
   $('#to-do').fadeIn('slow')
+  console.log(store.user)
   if (moment(store.user.created_at).add(1, 'm').format() >= moment().format()) {
     $('.to-do-h4').html('welcome to due in seven days!')
-    toDoApi.newUser()
   } else {
     $('.to-do-h4').html('welcome back!')
+  }
+  if (store.user.completed < 1) {
+    toDoApi.newUser()
   }
 }
 
