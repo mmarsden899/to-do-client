@@ -1,9 +1,9 @@
 {{#each items as |item|}}
   <section data-id="{{item.id}}">
     {{#if (overdue item.created_at)}}
-    <div class="card" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px">
+    <div class="card" style="width: 200px; height: 200px;">
       {{else}}
-      <div class="card dng" style="width: 25vw; max-width: 200px; height: 25vw; max-height: 200px;">
+      <div class="card dng" style="width: 200px; height: 200px;">
         {{/if}}
   <div id="card-display" class="card-body">
     <h5 class="card-title">{{item.title}}</h5>

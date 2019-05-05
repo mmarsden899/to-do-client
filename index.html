@@ -15,19 +15,21 @@
     <body>
       <div id="to-do" class="to-do">
         <nav>
-          <div class="taskscompleted"><p id="taskscompleted"> </p></div>
+          <div class="taskscompleted"><p id="taskscompleted">tasks completed: 0</p></div>
           <div class="nav-title-div"><h5 class="titleh5">due in seven days</h5></div>
           <div class="nav-button-div">
         <ul class="nav">
           <div id="toggle-button-wrapper" class="toggle-button-wrapper">
             <div id="toggle-button" style="cursor: pointer" class="toggle-button">
+              <i class="far fa-sun sun"></i>
+              <i class="far fa-moon moon"></i>
             </div>
           </div>
           <button class="btn btn-default btn-lg">
-  <div id="changepass"><li class="nav-bar-li"><i class="fas fa-unlock-alt"></i><b class="pwd">password</b></li></div>
+  <div id="changepass"><li class="nav-bar-li"><i class="fas fa-unlock-alt hover"></i><b class="pwd">password</b></li></div>
     </button>
       <button class="btn btn-default btn-lg">
-      <div id="sign-out"><li class="nav-bar-li"><i class="fas fa-sign-out-alt"></i><b class="log">log out</b></li></div>
+      <div id="sign-out"><li class="nav-bar-li"><i class="fas fa-sign-out-alt hover"></i><b class="log">log out</b></li></div>
     </button>
     </ul>
   </div>
@@ -37,7 +39,7 @@
     <div id="no-to-do" class="no-to-do">
     <h1 class="to-do-h1">hey there!</h1>
     <h4 class="to-do-h4"></h4>
-    <button id="get-started">let's get started!</button>
+    <button id="get-started" class="btn btn-outline-dark">let's get started!</button>
   </div>
   <div id="empty-space-div">
     <div id="create-to-do" class="create-to-do">

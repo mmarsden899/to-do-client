@@ -1,13 +1,13 @@
 const getFormFields = require('./../../../lib/get-form-fields.js')
 const ui = require('./ui')
+const themeUI = require('../themes/ui')
 const api = require('./api')
 const moment = require('moment')
 const store = require('../store')
-const authEvents = require('../auth/events')
+const completeEvents = require('../completes/events')
 
 const onGetStarted = function () {
   ui.getStarted()
-  $('#taskscompleted').text(`tasks completed: ${store.user.completed}`)
 }
 
 const onSendToDo = function (event) {
@@ -38,8 +38,8 @@ const onDestroyToDo = function (event) {
   api.destroyToDo(id)
     .then(ui.destroyToDoSuccess(id))
     .then(loopToDos)
-    .catch(ui.destroyToDoSuccess)
-  authEvents.onUpdateCompleted()
+    .catch(ui.destroyToDoFailure)
+  completeEvents.onUpdateCompleted()
 }
 
 const onShowUpdateForm = function (event) {
@@ -79,9 +79,6 @@ const onSendUpdate = function (event) {
     .catch(ui.sendUpdateFailure)
 }
 
-const onTurnCSS = function () {
-  ui.turnCSS()
-}
 
 const addHandlers = function () {
   $('#to-do').hide()
@@ -90,9 +87,7 @@ const addHandlers = function () {
   $('#card-update').hide()
   $('#update-task').hide()
   $('.content').hide()
-
-  $('#toggle-button').on('click', onTurnCSS)
-
+// events
   $('#lets-do-it').on('click', onMoreToDos)
   $('#get-started').on('click', onGetStarted)
   $('#get-started').on('click', startUpToDos)

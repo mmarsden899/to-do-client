@@ -54,12 +54,6 @@ const onBackToLogin = function (event) {
   ui.backToLogin()
 }
 
-const onUpdateCompleted = function () {
-  api.updateCompleted()
-    .then(ui.updateCompletedSuccess)
-    .catch(ui.updateCompletedFailure)
-}
-
 const addHandlers = function (event) {
   $('#change-password').hide()
   $('#signUpForm').hide()
@@ -76,6 +70,5 @@ const addHandlers = function (event) {
 }
 
 module.exports = {
-  addHandlers,
-  onUpdateCompleted
+  addHandlers
 }

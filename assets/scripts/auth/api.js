@@ -39,21 +39,6 @@ const signOut = function () {
   })
 }
 
-const updateCompleted = function () {
-  return $.ajax({
-    url: config.apiUrl + '/users/' + parseInt(store.user.id),
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: {
-      'item': {
-        'completed': (store.user.completed + 1)
-      }
-    }
-  })
-}
-
 const newUser = function () {
   return $.ajax({
     url: config.apiUrl + '/items',
@@ -77,6 +62,5 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  updateCompleted,
   newUser
 }

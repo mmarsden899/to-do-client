@@ -64,14 +64,26 @@ i {
   margin-left: -25px;
 }
 
-.nav li b {
-  margin-top: -25px;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
+.sun {
+  display: none;
+  font-size: 25px;
+  text-align: center;
 }
 
-.nav div:hover i {
+.moon {
+  display: block;
+  font-size: 25px;
+  text-align: center;
+}
+
+.nav li b {
+  margin-top: -25px;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  visibility: hidden;
+}
+
+.nav div:hover .hover {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
@@ -148,15 +160,16 @@ h2 {
 
 .toggle-button-wrapper {
   background-color: teal;
-  height: 50px;
-  width: 200px;
+  display: block;
+  height: 25px;
+  width: 150px;
   border-radius: 15px;
 }
 
 .toggle-button {
-  height: 30px;
+  height: 20px;
   width: 50px;
-  border-radius: 25%;
+  border-radius: 15px;
   right: 0;
   background-color: gray;
 }
@@ -244,4 +257,5 @@ h1, h2, .titleh5, .taskscompleted {
   margin: auto;
   margin-top: 25px;
   width: 80vw;
+  border-radius: 10px;
 }

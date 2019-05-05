@@ -1,5 +1,5 @@
 const store = require('../store')
-const toDoApi = require('../todo/api')
+const completesEvents = require('../completes/events')
 const moment = require('moment')
 
 const signUpSuccess = function (data) {
@@ -23,9 +23,8 @@ const signInSuccess = function (data) {
   } else {
     $('.to-do-h4').html('welcome back!')
   }
-  if (store.user.completed < 1) {
-    toDoApi.newUser()
-  }
+  completesEvents.onGetCompletes()
+  console.log(store.user)
 }
 
 const signInFailure = function (data) {
@@ -54,9 +53,13 @@ const signOutSuccess = function () {
   $('#update-task').fadeOut(700)
   $('.content').fadeOut(700)
   $('#no-to-do').show()
-  setTimeout($('#loginForms').fadeIn(1500), 750)
+  $('#loginForms').fadeIn(1500)
   store.user = null
   store.items = null
+  store.complete = null
+  store.hascomplete = null
+  store.allCompletes = null
+  store.id = null
 }
 
 const signOutFailure = function () {
