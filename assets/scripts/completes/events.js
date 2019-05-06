@@ -23,7 +23,7 @@ const iterateOverCompletes = function () {
       store.complete = store.allCompletes[i]
       store.hascomplete = true
       if (store.hascomplete) {
-        $('#taskscompleted').html(`tasks completed: ${store.complete.task}`)
+        $('#taskscompleted').html(`points earned: ${store.complete.task}`)
       } else {
         onCreateCompleted()
         todoApi.newUser()

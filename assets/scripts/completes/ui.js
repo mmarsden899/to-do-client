@@ -5,7 +5,7 @@ const createCompletedSuccess = function (data) {
   console.log(data)
   store.complete = data.complete
   console.log(store.complete)
-  $('#taskscompleted').html(`tasks completed: ` + store.complete.task)
+  $('#taskscompleted').html(`points earned: ` + store.complete.task)
 }
 
 const createCompletedFailure = function (data) {
