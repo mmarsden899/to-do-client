@@ -26,7 +26,21 @@ const turnCSS = function () {
     $('h1').css('color', 'black')
     $('b').css('color', 'black')
     $('i').css('color', 'black')
+    $('.dropdown-menu').css('background-color', 'rgb(161, 156, 156)')
+    $('.dropdowns').css('background-color', 'rgb(161, 156, 156)')
     $('.dropdowns').css('color', 'black')
+    $('.dropdowns').mouseover(function () {
+      $(this).css('background-color', 'rgb(136, 132, 132)')
+    })
+    $('.dropdowns').mouseover(function () {
+      $(this).css('color', 'black')
+    })
+    $('.dropdowns').mouseleave(function () {
+      $(this).css('background-color', 'rgb(161, 156, 156)')
+    })
+    $('.dropdowns').mouseleave(function () {
+      $(this).css('color', 'black')
+    })
     $('.card').css('background-color', 'white')
     $('.card').css('color', 'black')
     $('nav').css('background-color', 'lightgray')
@@ -66,6 +80,12 @@ const turnCSS = function () {
     $('.dropdowns').mouseleave(function () {
       $(this).css('background-color', '')
     })
+    $('.dropdowns').mouseover(function () {
+      $(this).css('color', '')
+    })
+    $('.dropdowns').mouseleave(function () {
+      $(this).css('color', '')
+    })
     $('h5').css('color', '')
     $('h4').css('color', '')
     $('h2').css('color', '')
@@ -104,8 +124,14 @@ const turnBlue = function () {
   $('.dropdowns').mouseover(function () {
     $(this).css('background-color', '#08415C')
   })
+  $('.dropdowns').mouseover(function () {
+    $(this).css('color', 'white')
+  })
   $('.dropdowns').mouseleave(function () {
     $(this).css('background-color', '#063247')
+  })
+  $('.dropdowns').mouseover(function () {
+    $(this).css('color', 'white')
   })
   $('h5').css('color', '#C5C5C5')
   $('h4').css('color', '#08415C')

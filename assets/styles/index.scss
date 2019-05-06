@@ -31,22 +31,21 @@ b {
 }
 
 .cant-afford h2 {
+  height: 50vh;
+  width: 50vw;
+  background-color: white;
   white-space: nowrap;
-  position: absolute;
+  position: sticky;
   color: black;
   font-size: 50px;
-  margin-top: -300px;
-  animation: cantafford 5s;
-}
-
-@keyframes cantafford {
-    from  { margin-left: -200px; }
-    to  { margin-left: 2000px; }
+  margin-top: calc(-45vh - 25vh);
+  margin-left: 25vw;
 }
 
 i {
   transition: visibility 0.5s, opacity 0.5s linear;
 }
+
 .nav-bar-li {
   margin: 0;
   width: 40px;
