@@ -22,20 +22,22 @@ const iterateOverCompletes = function () {
     if (store.allCompletes[i].user_id === store.user.id) {
       store.complete = store.allCompletes[i]
       store.hascomplete = true
-      if (store.hascomplete) {
-        $('#taskscompleted').html(`points earned: ${store.complete.task}`)
-      } else {
-        onCreateCompleted()
-        todoApi.newUser()
-      }
     }
+  }
+  if (store.hascomplete) {
+    console.log('wtf')
+    $('#taskscompleted').html(`points earned: ${store.complete.task}`)
+  } else {
+    console.log('wtf2')
+    onCreateCompleted()
+    todoApi.newUser()
   }
 }
 
 const onGetCompletes = function () {
   api.getCompletes()
     .then(ui.getCompletesSuccess)
-    .then(setTimeout(iterateOverCompletes, 1000))
+    .then(iterateOverCompletes)
     .catch(ui.getCompletesFailure)
 }
 
