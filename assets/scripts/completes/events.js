@@ -41,6 +41,11 @@ const onGetCompletes = function () {
     .catch(ui.getCompletesFailure)
 }
 
+const onBuyTheme = function (cost, theme) {
+  api.buyTheme(cost, theme)
+    .then(console.log(theme))
+}
+
 const addHandlers = function (event) {
 }
 
@@ -48,5 +53,6 @@ module.exports = {
   addHandlers,
   onCreateCompleted,
   onUpdateCompleted,
-  onGetCompletes
+  onGetCompletes,
+  onBuyTheme
 }

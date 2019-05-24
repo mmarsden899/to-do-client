@@ -1,6 +1,7 @@
 'use strict'
 const ui = require('./ui')
 const store = require('../store')
+const completeEvents = require('../completes/events')
 window.toggle = true
 
 const onTurnCSS = function () {
@@ -19,26 +20,32 @@ const onRunPink = function () {
   ui.turnPink()
 }
 
-const openBuyModal = function () {
-}
-
-const blueDrop = function () {
-  if (store.complete.blue === true) {
-    onRunBlue()
-  } else if (store.complete.task > 7) {
-    openBuyModal()
-  } else {
-    $('.cant-afford').show()
-    console.log('can\'t afford')
-  }
-}
-
 const canAfford = function (event) {
   console.log(event.target)
-  if (store.complete.task >= 7) {
-    $(event.target).text('buy?')
-  } else {
-    $(event.target).text('cant afford')
+  if ($(event.target).text() === 'blue') {
+    if (store.complete.blue) {
+      $(event.target).text('owned')
+    } else if (store.complete.task >= 7) {
+      $(event.target).text('buy?')
+    } else {
+      $(event.target).text('cant afford')
+    }
+  } else if ($(event.target).text() === 'pink') {
+    if (store.complete.pink) {
+      $(event.target).text('owned')
+    } else if (store.complete.task >= 7) {
+      $(event.target).text('buy?')
+    } else {
+      $(event.target).text('cant afford')
+    }
+  } else if ($(event.target).text() === 'purple') {
+    if (store.complete.purple) {
+      $(event.target).text('owned')
+    } else if (store.complete.task >= 7) {
+      $(event.target).text('buy?')
+    } else {
+      $(event.target).text('cant afford')
+    }
   }
 }
 
@@ -52,6 +59,31 @@ const canAffordReturn = function (event) {
   }
 }
 
+const onBuyTheme = function (event) {
+  if ($(event.target).hasClass('blue-drop')) {
+    if (store.complete.blue) {
+      onRunBlue()
+    } else if (store.complete.task >= 7) {
+      store.complete.blue = true
+      completeEvents.onBuyTheme(7)
+    }
+  } else if ($(event.target).hasClass('pink-drop')) {
+    if (store.complete.pink) {
+      onRunPink()
+    } else if (store.complete.task >= 7) {
+      store.complete.pink = true
+      completeEvents.onBuyTheme(7)
+    }
+  } else {
+    if (store.complete.purple) {
+      onRunPurple()
+    } else if (store.complete.task >= 7) {
+      store.complete.purple = true
+      completeEvents.onBuyTheme(7)
+    }
+  }
+}
+
 const addHandlers = function () {
   $('.dark').hide()
   $('.blue').hide()
@@ -62,6 +94,7 @@ const addHandlers = function () {
   $('#toggle-button').on('click', onTurnCSS)
   // $('.blue-drop').on('click', blueDrop)
   $('.blue-drop').hover(canAfford, canAffordReturn)
+  $('.blue-drop').on('click', onBuyTheme)
   $('.pink-drop').hover(canAfford, canAffordReturn)
   $('.purple-drop').hover(canAfford, canAffordReturn)
 }

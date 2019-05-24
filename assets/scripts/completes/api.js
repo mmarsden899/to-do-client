@@ -11,7 +11,10 @@ const createCompleted = function () {
     },
     data: {
       'complete': {
-        'task': 0
+        'task': 0,
+        'blue': false,
+        'pink': false,
+        'purple': false
       }
     }
   })
@@ -42,8 +45,27 @@ const updateCompleted = function () {
   })
 }
 
+const buyTheme = function (cost) {
+  return $.ajax({
+    url: config.apiUrl + '/completes/' + store.complete.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'complete': {
+        'task': (store.complete.task - cost),
+        'blue': store.complete.blue,
+        'pink': store.complete.pink,
+        'purple': store.complete.purple
+      }
+    }
+  })
+}
+
 module.exports = {
   updateCompleted,
   createCompleted,
-  getCompletes
+  getCompletes,
+  buyTheme
 }
