@@ -60,6 +60,7 @@ const canAffordReturn = function (event) {
 }
 
 const onBuyTheme = function (event) {
+  console.log(store.complete)
   if ($(event.target).hasClass('blue-drop')) {
     if (store.complete.blue) {
       onRunBlue()
@@ -67,14 +68,16 @@ const onBuyTheme = function (event) {
       store.complete.blue = true
       completeEvents.onBuyTheme(7)
     }
-  } else if ($(event.target).hasClass('pink-drop')) {
+  }
+  if ($(event.target).hasClass('pink-drop')) {
     if (store.complete.pink) {
       onRunPink()
     } else if (store.complete.task >= 7) {
       store.complete.pink = true
       completeEvents.onBuyTheme(7)
     }
-  } else {
+  }
+  if ($(event.target).hasClass('purple-drop')) {
     if (store.complete.purple) {
       onRunPurple()
     } else if (store.complete.task >= 7) {
@@ -94,7 +97,7 @@ const addHandlers = function () {
   $('#toggle-button').on('click', onTurnCSS)
   // $('.blue-drop').on('click', blueDrop)
   $('.blue-drop').hover(canAfford, canAffordReturn)
-  $('.blue-drop').on('click', onBuyTheme)
+  $('.dropdown-item').on('click', onBuyTheme)
   $('.pink-drop').hover(canAfford, canAffordReturn)
   $('.purple-drop').hover(canAfford, canAffordReturn)
 }

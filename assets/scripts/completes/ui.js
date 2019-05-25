@@ -1,15 +1,11 @@
 const store = require('../store')
 
 const createCompletedSuccess = function (data) {
-  console.log('==========================')
-  console.log(data)
   store.complete = data.complete
-  console.log(store.complete)
   $('#taskscompleted').html(`points earned: ` + store.complete.task)
 }
 
 const createCompletedFailure = function (data) {
-  console.log('whoops with data ' + JSON.stringify(data))
 }
 
 const updateCompletedSuccess = function (data) {

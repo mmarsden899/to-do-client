@@ -51,7 +51,9 @@ const showUpdateForm = function () {
 
 const destroyToDoSuccess = function (id) {
   $(id).hide()
-  $('#taskscompleted').text(`points earned: ${store.complete.task + 1}`)
+  store.complete.task += 1
+  console.log(store.complete.task)
+  $('#taskscompleted').text(`points earned: ${store.complete.task}`)
 }
 
 const destroyToDoFailure = function (id) {

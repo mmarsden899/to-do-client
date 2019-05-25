@@ -3,6 +3,7 @@
 const ui = require('./ui')
 const api = require('./api')
 const todoApi = require('../todo/api')
+const todoEvents = require('../todo/events')
 const store = require('../store')
 
 const onCreateCompleted = function () {
@@ -12,6 +13,7 @@ const onCreateCompleted = function () {
 }
 
 const onUpdateCompleted = function () {
+  console.log('are we getting here at onupdatecompleted?')
   api.updateCompleted()
     .then(ui.updateCompletedSuccess)
     .catch(ui.updateCompletedFailure)
@@ -25,10 +27,8 @@ const iterateOverCompletes = function () {
     }
   }
   if (store.hascomplete) {
-    console.log('wtf')
     $('#taskscompleted').html(`points earned: ${store.complete.task}`)
   } else {
-    console.log('wtf2')
     onCreateCompleted()
     todoApi.newUser()
   }
@@ -42,8 +42,9 @@ const onGetCompletes = function () {
 }
 
 const onBuyTheme = function (cost, theme) {
-  api.buyTheme(cost, theme)
+  api.buyTheme(cost)
     .then(console.log(theme))
+    .then(todoEvents.onGetToDos)
 }
 
 const addHandlers = function (event) {

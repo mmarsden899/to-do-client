@@ -1,10 +1,8 @@
 const getFormFields = require('./../../../lib/get-form-fields.js')
 const ui = require('./ui')
-const themeUI = require('../themes/ui')
 const api = require('./api')
-const moment = require('moment')
 const store = require('../store')
-const completeEvents = require('../completes/events')
+const completeApi = require('../completes/api')
 
 const onGetStarted = function () {
   ui.getStarted()
@@ -39,7 +37,7 @@ const onDestroyToDo = function (event) {
     .then(ui.destroyToDoSuccess(id))
     .then(loopToDos)
     .catch(ui.destroyToDoFailure)
-  completeEvents.onUpdateCompleted()
+  completeApi.updateCompleted()
 }
 
 const onShowUpdateForm = function (event) {
@@ -81,6 +79,7 @@ const onSendUpdate = function (event) {
 
 
 const addHandlers = function () {
+  // $('.content').on('click', onGetToDos)
   $('#to-do').hide()
   $('#add-another').hide()
   $('#create-to-do').hide()

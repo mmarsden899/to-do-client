@@ -39,7 +39,7 @@ const updateCompleted = function () {
     },
     data: {
       'complete': {
-        'task': (store.complete.task + 1)
+        'task': store.complete.task
       }
     }
   })
