@@ -44,6 +44,8 @@ const onGetCompletes = function () {
 const onBuyTheme = function (cost, theme) {
   api.buyTheme(cost)
     .then(console.log(theme))
+    .then(store.complete.task -= 7)
+    .then($('#taskscompleted').text(`points earned: ${store.complete.task}`))
     .then(todoEvents.onGetToDos)
 }
 
