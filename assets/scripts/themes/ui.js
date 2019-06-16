@@ -3,6 +3,8 @@
 
 const turnCSS = function () {
   if (window.toggle === true) {
+    $('#to-do-submit').removeClass('btn-outline-light')
+    $('#to-do-submit').addClass('btn-outline-dark')
     $('.toggle-button').css({ marginLeft: '50px' })
     $('body').css('background-color', 'white')
     $('.get-started').css('color', 'black')
@@ -51,6 +53,8 @@ const turnCSS = function () {
     $('.dark').show()
     window.toggle = false
   } else {
+    $('#to-do-submit').removeClass('btn-outline-dark')
+    $('#to-do-submit').addClass('btn-outline-light')
     $('.sun').css('display', 'none')
     $('.moon').css('display', 'block')
     $('.toggle-button').css({ marginLeft: '0' })
@@ -102,6 +106,9 @@ const turnCSS = function () {
 }
 
 const turnBlue = function () {
+  // btn-outline-primary
+  $('#to-do-submit').removeClass()
+  $('#to-do-submit').addClass('btn btn-outline-primary')
   $('.get-started').css('color', '#08415C')
   $('.get-started').css('border', 'solid 1px #08415C')
   $('.get-started').mouseover(function () {
