@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Due in 7 Days</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <div id="to-do" class="to-do">
+        <nav>
+          <div class="taskscompleted"><p id="taskscompleted">points earned: </p></div>
+          <div class="nav-title-div"><h5 class="titleh5">due in seven days</h5></div>
+          <div class="nav-button-div">
+        <ul class="nav">
+          <div id="toggle-button-wrapper" class="toggle-button-wrapper">
+            <div id="toggle-button" style="cursor: pointer" class="toggle-button">
+              <i class="far fa-sun sun"></i>
+              <i class="far fa-moon moon"></i>
+            </div>
+          </div>
+
+          <div class="btn-group">
+              <button class="btn btn-default btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div id="colorpal">
+                <li class="nav-bar-li"><i class="fas fa-palette"></i><b></b></li></div>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item blue-drop dropdowns" href="#">blue</a>
+              <a class="dropdown-item pink-drop dropdowns" href="#">pink</a>
+              <a class="dropdown-item purple-drop dropdowns" href="#">purple</a>
+            </div>
+          </div>
+          <button class="btn btn-default btn-lg">
+  <div id="changepass"><li class="nav-bar-li"><i class="fas fa-unlock-alt hover"></i><b class="pwd">password</b></li></div>
+    </button>
+      <button class="btn btn-default btn-lg">
+      <div id="sign-out"><li class="nav-bar-li"><i class="fas fa-sign-out-alt hover"></i><b class="log">log out</b></li></div>
+    </button>
+    </ul>
+  </div>
+        </nav>
+
+  <div class="to-do-display">
+    <div id="no-to-do" class="no-to-do">
+    <h1 class="to-do-h1">hey there!</h1>
+    <h4 class="to-do-h4"></h4>
+    <button id="get-started" class="btn btn-outline-light get-started">let's get started!</button>
+  </div>
+  <div id="empty-space-div">
+    <div id="create-to-do" class="create-to-do">
+      <h2>what do you want to do?</h2>
+      <form id="to-do-form">
+      <input type="text" name="title" placeholder="task" maxlength="15">
+      <input type="text" name="description" placeholder="description">
+      <input type="submit" class="btn btn-outline-light" id="to-do-submit">
+    </form>
+    </div>
+    <div id="add-another" class="add-another">
+      <p>more to do?</p>
+      <button id="lets-do-it">let's do it</button>
+    </div>
+  </div>
+    <div id="content" class="content"></div>
+    <form id="update-task" class="update-task">
+    </form>
+</div>
+        </div>
+      <div id="loginForms" >
+<form id="sign-in" name="sign-in" class="login-container">
+  <h1>due in seven days</h1>
+  <input type="email" name="credentials[email]" placeholder="Email" class="sign-in-form">
+  <input type="password" autocomplete="off" name="credentials[password]" placeholder="Password" class="sign-in-form">
+  <p id="signInError" class="signInError"></p>
+  <input type="submit" autocomplete="off" value="Sign In!" class="sign-in-button submit-button btn btn-outline-dark">
+</form>
+<button class="sign-up-button secondary-buttons btn btn-outline-dark" id="sign-up-button">Sign Up?</button>
+</div>
+
+<div id="signUpForm" class="sign-up-wrap">
+<form id="sign-up" class="sign-up-form-container">
+<input type="text" name="credentials[email]" placeholder="Email" class="sign-up-form">
+<input type="password" name="credentials[password]" placeholder="Password" class="sign-up-form">
+<input type="password" name="credentials[password_confirmation]" placeholder="Password Confirmation" class="sign-up-form">
+<input type="number" name="completed" value=0 class="hidden-completed">
+<p id="signUpError" class="signInError"> </p>
+<input type="submit" id="buttonSignUp" value="Sign Up!" class="signUpButton submit-button btn btn-outline-dark">
+</form>
+<button type="button" id="backtoLogin" class="backtoLogin secondary-buttons btn btn-outline-dark">Back to Login</button>
+</div>
+
+<form id="change-password" class="passwordForm">
+  <input type="password" name="passwords[old]" placeholder="old password" class="passinput">
+  <input type="password" name="passwords[new]" placeholder="new password" class="passinput">
+  <p id="changePassError" class="signInError"> </p>
+  <button type="submit" class="changePassSub">submit</button>
+  <button id="passtoAccount" class="changePassSub">account</button>
+</form>
+    </body>
+</html>
